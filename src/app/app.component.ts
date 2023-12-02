@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { EmployeeService } from './services/employee.service';
@@ -12,9 +12,9 @@ import { CoreService } from './core/core.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
-    'id',
+    //'id',
     'firstName',
     'lastName',
     'email',
@@ -26,10 +26,16 @@ export class AppComponent implements OnInit {
     'package',
     'action',
   ];
+
   dataSource!: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  @ViewChild(MatSort)
+  sort!: MatSort;
+
+  currencyCode: string = 'USD';
 
   constructor(
     private _dialog: MatDialog,
@@ -38,6 +44,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getEmployeeList();
+  }
+
+  ngAfterViewInit(): void {
     this.getEmployeeList();
   }
 

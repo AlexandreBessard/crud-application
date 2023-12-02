@@ -13,7 +13,6 @@ export class EmpAddEditComponent implements OnInit {
   empForm: FormGroup;
 
   education: string[] = [
-    'Matric',
     'Diploma',
     'Intermediate',
     'Graduate',

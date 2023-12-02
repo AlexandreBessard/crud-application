@@ -15,3 +15,10 @@
   display: flex;
   gap: 5px;
 }
+
+.no-data-row {
+  background-color: #f0f0f0; /* Light gray background */
+  color: red; /* Dark gray text color */
+  font-weight: bold;
+}
+

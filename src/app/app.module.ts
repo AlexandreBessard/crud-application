@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './core/in-memory-data.service';
 
 @NgModule({
   declarations: [AppComponent, EmpAddEditComponent],
@@ -40,10 +42,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 500 }),
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
